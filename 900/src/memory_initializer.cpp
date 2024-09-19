@@ -1,0 +1,84 @@
+#include <cstdint>
+#include "memory_initializer.h"
+#include "msr_reader.h"
+
+// Function to initialize memory
+uint64_t initializeMemory() {
+    uint64_t baseAddr = readMSR();
+    extern uint64_t MEMORY[0x45240];
+    MEMORY[0x450F8] = baseAddr + 0x1C0;
+    MEMORY[0x45030] = reinterpret_cast<uint64_t>(baseAddr + 0xB7A30);
+    MEMORY[0x45090] = reinterpret_cast<uint64_t>(baseAddr + 0x301B20);
+    MEMORY[0x45160] = baseAddr + 0x301DE0;
+    MEMORY[0x45240] = baseAddr + 0x301CE0;
+    MEMORY[0x45078] = reinterpret_cast<uint64_t>(baseAddr + 0x2714B0);
+    MEMORY[0x45188] = reinterpret_cast<uint64_t>(baseAddr + 0x1496C0);
+    MEMORY[0x45168] = reinterpret_cast<uint64_t>(baseAddr + 0x271E20);
+    MEMORY[0x45028] = reinterpret_cast<uint64_t>(baseAddr + 0x37BE70);
+    MEMORY[0x45208] = baseAddr + 0x30F450;
+    MEMORY[0x45020] = baseAddr + 0x453EA0;
+    MEMORY[0x45198] = baseAddr + 0x1ED670;
+    MEMORY[0x450E0] = baseAddr + 0x43E610;
+    MEMORY[0x45150] = baseAddr + 0x43E7D0;
+    MEMORY[0x45218] = baseAddr + 0x29A380;
+    MEMORY[0x451D8] = baseAddr + 0x7BB80;
+    MEMORY[0x45200] = baseAddr + 0x7C1C0;
+    MEMORY[0x45040] = baseAddr + 0x7BBD0;
+    MEMORY[0x451E0] = baseAddr + 0x7E680;
+    MEMORY[0x450A0] = baseAddr + 0x809C0;
+    MEMORY[0x451C8] = baseAddr + 0x7EC40;
+    MEMORY[0x450E8] = baseAddr + 0x7CD80;
+    MEMORY[0x451E8] = baseAddr + 0x7BA30;
+    MEMORY[0x45038] = baseAddr + 0x7BAA0;
+    MEMORY[0x45128] = baseAddr + 0x41EB00;
+    MEMORY[0x451A0] = baseAddr + 0x2196D0;
+    MEMORY[0x45228] = baseAddr + 0x219790;
+    MEMORY[0x45178] = baseAddr + 0xF8370;
+    MEMORY[0x45130] = baseAddr + 0x487AB0;
+    extern uint64_t qword_45010;
+    qword_45010 = baseAddr + 0x271B50;
+    MEMORY[0x45098] = baseAddr + 0x2715B0;
+    MEMORY[0x451A8] = baseAddr + 0xB7C70;
+    MEMORY[0x45138] = baseAddr + 0x3A1B30;
+    MEMORY[0x45148] = baseAddr + 0x445060;
+    MEMORY[0x45058] = baseAddr + 0x6252D0;
+    MEMORY[0x45050] = baseAddr + 0x4628B0;
+    MEMORY[0x45158] = baseAddr + 0x1FF2D0;
+    MEMORY[0x451B0] = baseAddr + 0x1FF500;
+    MEMORY[0x450D0] = baseAddr + 0x61F690;
+    MEMORY[0x45060] = baseAddr + 0x61F9D0;
+    MEMORY[0x45048] = baseAddr + 0x61F260;
+    MEMORY[0x45120] = baseAddr + 0x61CED0;
+    MEMORY[0x45180] = baseAddr + 0x624970;
+    MEMORY[0x45068] = baseAddr + 0x6441E0;
+    MEMORY[0x45170] = baseAddr + 0x641C60;
+    MEMORY[0x45100] = baseAddr + 0x6439A0;
+    MEMORY[0x45018] = baseAddr + 0x63FEE0;
+    MEMORY[0x45220] = baseAddr + 0x630C40;
+    MEMORY[0x450C0] = baseAddr + 0x8BCD0;
+    MEMORY[0x45110] = baseAddr + 0x969E0;
+    MEMORY[0x45190] = baseAddr + 0x97750;
+    MEMORY[0x45108] = baseAddr + 0x97640;
+    MEMORY[0x45080] = baseAddr + 0x97230;
+    MEMORY[0x45070] = baseAddr + 0x2D6EB0;
+    MEMORY[0x450B0] = baseAddr + 0x21F1128;
+    MEMORY[0x45140] = baseAddr + 0x152BF60;
+    MEMORY[0x451D0] = baseAddr + 0x15621E0;
+    MEMORY[0x450D8] = baseAddr + 0x2268D48;
+    MEMORY[0x45210] = baseAddr + 0x111F870;
+    MEMORY[0x451F8] = baseAddr + 0x21EFF20;
+    MEMORY[0x451B8] = baseAddr + 0x1B946E0;
+    MEMORY[0x450C8] = baseAddr + 0x1100310;
+    MEMORY[0x450A8] = baseAddr + 0x26541C0;
+    MEMORY[0x451F0] = baseAddr + 0x1579DF8;
+    MEMORY[0x45238] = baseAddr + 0x1B50BEC;
+    MEMORY[0x45088] = baseAddr + 0x2646CA8;
+    MEMORY[0x450B8] = baseAddr + 0x264DB40;
+    MEMORY[0x45118] = baseAddr + 0x2648238;
+    MEMORY[0x450F0] = baseAddr + 0x2648248;
+    uint64_t v1 = baseAddr + 0x264C000;
+    uint64_t result = baseAddr + 0x264C808;
+    MEMORY[0x45230] = v1;
+    MEMORY[0x451C0] = result;
+    return result;
+}
